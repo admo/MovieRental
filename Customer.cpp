@@ -34,7 +34,6 @@ string Customer::statement()
     result << "Rental Record for " << getName() << "\n";
     for ( ; iter != iter_end; ++iter ) {
         const Rental &rental = *iter;
-        double thisAmount = rental.getCharge();
 
         // add frequent renter points
         frequentRenterPoints++;
@@ -44,17 +43,12 @@ string Customer::statement()
 
         // show figures for this rental
         result << "\t" << rental.getMovie().getTitle() << "\t"
-               << thisAmount << "\n";
-        totalAmount += thisAmount;
+               << rental.getCharge() << "\n";
+        totalAmount += rental.getCharge();
     }
     // add footer lines
     result << "Amount owed is " << totalAmount << "\n";
     result << "You earned " << frequentRenterPoints
            << " frequent renter points";
     return result.str();
-}
-
-double Customer::amountFor(const Rental &rental) const
-{
-    return rental.getCharge();
 }
