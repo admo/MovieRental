@@ -1,9 +1,9 @@
 #include "RegularPrice.h"
 #include "Movie.h"
 
-int RegularPrice::getPriceCode() const
+PriceCode RegularPrice::getPriceCode() const
 {
-    return Movie::REGULAR;
+    return PriceCode::REGULAR;
 }
 
 double RegularPrice::getCharge(int daysRented) const

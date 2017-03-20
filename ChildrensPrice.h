@@ -5,6 +5,6 @@
 class ChildrensPrice: public Price
 {
 public:
-    virtual int getPriceCode() const;
-    virtual double getCharge( int daysRented ) const;
+    virtual PriceCode getPriceCode() const override;
+    virtual double getCharge( int daysRented ) const override;
 };

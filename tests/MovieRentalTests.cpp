@@ -10,9 +10,9 @@ class MovieRentalTests: public Test
 protected:
     using CustomerPtr = std::unique_ptr<Customer>;
     CustomerPtr customer;
-    Movie THE_HULK{"The Hulk", Movie::CHILDRENS};
-    Movie IRON_MAN{"Iron Man", Movie::NEW_RELEASE};
-    Movie SPIDER_MAN{"Spiderman", Movie::REGULAR};
+    Movie THE_HULK{"The Hulk", PriceCode::CHILDRENS};
+    Movie IRON_MAN{"Iron Man", PriceCode::NEW_RELEASE};
+    Movie SPIDER_MAN{"Spiderman", PriceCode::REGULAR};
 
 public:
     void SetUp()

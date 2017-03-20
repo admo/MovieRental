@@ -24,15 +24,12 @@ string Customer::getName() const
     return _name;
 }
 
-string Customer::statement()
+string Customer::statement() const
 {
-    vector< Rental >::iterator iter = _rentals.begin();
-    vector< Rental >::iterator iter_end = _rentals.end();
     ostringstream result;
     result << "Rental Record for " << getName() << "\n";
-    for ( ; iter != iter_end; ++iter ) {
-        const Rental &rental = *iter;
-
+    for (const auto& rental: _rentals)
+    {
         // show figures for this rental
         result << "\t" << rental.getMovie().getTitle() << "\t"
                << rental.getCharge() << "\n";
@@ -46,24 +43,18 @@ string Customer::statement()
 
 double Customer::getTotalCharge() const
 {
-  double result = 0;
-  vector< Rental >::const_iterator iter = _rentals.begin();
-  vector< Rental >::const_iterator iter_end = _rentals.end();
-  for ( ; iter != iter_end; ++iter ) {
-    Rental rental = *iter;
-    result += rental.getCharge();
-  }
-  return result;
+    double result = 0;
+    for (const auto& rental: _rentals)
+        result += rental.getCharge();
+
+    return result;
 }
 
 int Customer::getTotalFrequentRenterPoints() const
 {
-  int result = 0;
-  vector< Rental >::const_iterator iter = _rentals.begin();
-  vector< Rental >::const_iterator iter_end = _rentals.end();
-  for ( ; iter != iter_end; ++iter ) {
-    Rental rental = *iter;
-    result += rental.getFrequentRenterPoints();
-  }
-  return result;
+    int result = 0;
+    for (const auto& rental: _rentals)
+        result += rental.getFrequentRenterPoints();
+
+    return result;
 }

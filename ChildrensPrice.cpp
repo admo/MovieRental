@@ -1,9 +1,9 @@
 #include "ChildrensPrice.h"
 #include "Movie.h"
 
-int ChildrensPrice::getPriceCode() const
+PriceCode ChildrensPrice::getPriceCode() const
 {
-    return Movie::CHILDRENS;
+    return PriceCode::CHILDRENS;
 }
 
 double ChildrensPrice::getCharge(int daysRented) const

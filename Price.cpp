@@ -3,5 +3,5 @@
 
 int Price::getFrequentRenterPoints(int daysRented) const
 {
-        return 1;
+    return 1;
 }

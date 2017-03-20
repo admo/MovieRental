@@ -5,7 +5,7 @@
 #include "ChildrensPrice.h"
 #include "NewReleasePrice.h"
 
-Movie::Movie( const std::string& title, int priceCode )
+Movie::Movie( const std::string& title, PriceCode priceCode )
     : _title( title )
 {
     setPriceCode(priceCode);
@@ -26,22 +26,22 @@ Movie& Movie::operator=( const Movie& rhs )
     return *this;
 }
 
-int Movie::getPriceCode() const
+PriceCode Movie::getPriceCode() const
 {
     return _price->getPriceCode();
 }
 
-void Movie::setPriceCode( int arg )
+void Movie::setPriceCode( PriceCode arg )
 {
     switch (arg)
     {
-    case REGULAR:
+    case PriceCode::REGULAR:
         _price.reset(new RegularPrice);
         break;
-    case CHILDRENS:
+    case PriceCode::CHILDRENS:
         _price.reset(new ChildrensPrice);
         break;
-    case NEW_RELEASE:
+    case PriceCode::NEW_RELEASE:
         _price.reset(new NewReleasePrice);
         break;
     default:
