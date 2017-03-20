@@ -6,4 +6,5 @@ class NewReleasePrice: public Price
 {
 public:
     virtual int getPriceCode() const;
+    virtual double getCharge( int daysRented ) const;
 };
