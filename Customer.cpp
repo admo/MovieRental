@@ -34,7 +34,7 @@ string Customer::statement()
     result << "Rental Record for " << getName() << "\n";
     for ( ; iter != iter_end; ++iter ) {
         const Rental &rental = *iter;
-        double thisAmount = amountFor(rental);
+        double thisAmount = rental.getCharge();
 
         // add frequent renter points
         frequentRenterPoints++;
