@@ -16,4 +16,6 @@ public:
 private:
     std::string _name;
     std::vector< Rental > _rentals;
+
+    double getTotalCharge() const;
 };
