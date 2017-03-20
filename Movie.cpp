@@ -61,11 +61,7 @@ double Movie::getCharge(int daysRented) const
 
 int Movie::getFrequentRenterPoints(int daysRented) const
 {
-    if ( ( getPriceCode() == Movie::NEW_RELEASE )
-         && daysRented > 1 )
-        return 2;
-    else
-        return 1;
+    return _price->getFrequentRenterPoints(daysRented);
 }
 
 const int Movie::CHILDRENS;
