@@ -10,3 +10,8 @@ double NewReleasePrice::getCharge(int daysRented) const
 {
     return daysRented * 3;
 }
+
+int NewReleasePrice::getFrequentRenterPoints(int daysRented) const
+{
+    return (daysRented > 1) ? 2 : 1;
+}
