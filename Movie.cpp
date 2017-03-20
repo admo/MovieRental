@@ -2,8 +2,9 @@
 
 Movie::Movie( const std::string& title, int priceCode )
     : _title( title )
-    , _priceCode( priceCode )
-{}
+{
+    setPriceCode(priceCode);
+}
 
 int Movie::getPriceCode() const
 {
