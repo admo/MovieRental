@@ -18,4 +18,5 @@ private:
     std::vector< Rental > _rentals;
 
     double getTotalCharge() const;
+    int getTotalFrequentRenterPoints() const;
 };
