@@ -1,4 +1,9 @@
+#include <stdexcept>
+
 #include "Movie.h"
+#include "RegularPrice.h"
+#include "ChildrensPrice.h"
+#include "NewReleasePrice.h"
 
 Movie::Movie( const std::string& title, int priceCode )
     : _title( title )
@@ -6,14 +11,42 @@ Movie::Movie( const std::string& title, int priceCode )
     setPriceCode(priceCode);
 }
 
+Movie::Movie(const Movie& movie)
+    : _title(movie.getTitle())
+{
+    setPriceCode(movie.getPriceCode());
+}
+
+Movie& Movie::operator=( const Movie& rhs )
+{
+    if ( this == &rhs )
+        return *this;
+    _title = rhs.getTitle();
+    setPriceCode( rhs.getPriceCode() );
+    return *this;
+}
+
 int Movie::getPriceCode() const
 {
-    return _priceCode;
+    return _price->getPriceCode();
 }
 
 void Movie::setPriceCode( int arg )
 {
-    _priceCode = arg;
+    switch (arg)
+    {
+    case REGULAR:
+        _price.reset(new RegularPrice);
+        break;
+    case CHILDRENS:
+        _price.reset(new ChildrensPrice);
+        break;
+    case NEW_RELEASE:
+        _price.reset(new NewReleasePrice);
+        break;
+    default:
+        throw std::invalid_argument("Incorrect Price Code");
+    }
 }
 
 std::string Movie::getTitle() const
@@ -46,9 +79,9 @@ int Movie::getFrequentRenterPoints(int daysRented) const
 {
     if ( ( getPriceCode() == Movie::NEW_RELEASE )
          && daysRented > 1 )
-      return 2;
+        return 2;
     else
-      return 1;
+        return 1;
 }
 
 const int Movie::CHILDRENS;

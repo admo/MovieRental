@@ -1,6 +1,8 @@
 #pragma once
 
 #include <string>
+#include <memory>
+#include "Price.h"
 
 class Movie
 {
@@ -10,6 +12,8 @@ public:
     static const int NEW_RELEASE = 1;
 
     Movie( const std::string& title, int priceCode = REGULAR );
+    Movie( const Movie& movie );
+    Movie& operator=( const Movie& rhs );
 
     int getPriceCode() const;
     void setPriceCode( int arg );
@@ -19,5 +23,5 @@ public:
 
 private:
     std::string _title;
-    int _priceCode;
+    std::unique_ptr<Price> _price;
 };
