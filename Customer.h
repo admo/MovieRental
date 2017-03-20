@@ -16,4 +16,5 @@ public:
 private:
     std::string _name;
     std::vector< Rental > _rentals;
+    double amountFor(const Rental &rental) const;
 };
